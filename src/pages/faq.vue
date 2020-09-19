@@ -11,11 +11,10 @@
             href="https://github.com/dsusco/tp.net-armageddon.org"
             target="_blank"
             >NetEA Tournament Pack repo</a
-          >
-          is updated.
+          >.
         </p>
         <p>
-          The last generation date is <strong>{{ date }}</strong
+          The last build date is <strong>{{ date }}</strong
           >.
         </p>
         <header class="title is-5">Where are those icons from?</header>
