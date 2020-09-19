@@ -2,8 +2,6 @@ const path = require('path');
 
 module.exports = {
   siteName: 'NetEA Unit Cards',
-  siteUrl: '',
-  pathPrefix: '',
   templates: {
     Army: [
       {

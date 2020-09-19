@@ -14,31 +14,23 @@
         <div class="navbar-end">
           <div class="navbar-item">
             <div class="buttons">
-              <b-navbar-item>
-                <g-link to="/faq/" title="FAQ">
-                  <b-icon
-                    class="Nav-faqIcon"
-                    icon="frequently-asked-questions"
-                  />
-                </g-link>
-              </b-navbar-item>
-              <b-navbar-item>
-                <a href="javascript:window.print()" title="Print this page">
-                  <b-icon class="Nav-printerIcon" icon="printer" />
-                </a>
-              </b-navbar-item>
-              <b-navbar-item>
-                <a
-                  href="https://github.com/jaguilar87/netea-cards"
-                  target="_blank"
-                >
-                  <b-icon
-                    class="Nav-githubIcon"
-                    icon="github"
-                    title="See repo"
-                  />
-                </a>
-              </b-navbar-item>
+              <g-link class="navbar-item" to="/faq/" title="FAQ">
+                <b-icon class="Nav-faqIcon" icon="frequently-asked-questions" />
+              </g-link>
+              <a
+                class="navbar-item"
+                href="javascript:window.print()"
+                title="Print this page"
+              >
+                <b-icon class="Nav-printerIcon" icon="printer" />
+              </a>
+              <a
+                class="navbar-item"
+                href="https://github.com/jaguilar87/netea-cards"
+                target="_blank"
+              >
+                <b-icon class="Nav-githubIcon" icon="github" title="See repo" />
+              </a>
             </div>
           </div>
         </div>
