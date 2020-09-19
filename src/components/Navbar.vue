@@ -1,7 +1,7 @@
 <template>
   <nav class="Nav navbar">
     <div class="container">
-      <div class="navbar-brand">
+      <div class="Nav-brand navbar-brand">
         <g-link class="navbar-item" to="/" exact>
           <b-icon class="Nav-icon" icon="cards-outline" />
           <h1>
@@ -10,28 +10,29 @@
         </g-link>
       </div>
 
-      <div class="navbar-menu">
-        <div class="navbar-end">
-          <div class="navbar-item">
-            <div class="buttons">
-              <g-link class="navbar-item" to="/faq/" title="FAQ">
-                <b-icon class="Nav-faqIcon" icon="frequently-asked-questions" />
-              </g-link>
-              <a
-                class="navbar-item"
-                href="javascript:window.print()"
-                title="Print this page"
-              >
-                <b-icon class="Nav-printerIcon" icon="printer" />
-              </a>
-              <a
-                class="navbar-item"
-                href="https://github.com/jaguilar87/netea-cards"
-                target="_blank"
-              >
-                <b-icon class="Nav-githubIcon" icon="github" title="See repo" />
-              </a>
-            </div>
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <div class="buttons">
+            <a
+              class="Nav-printItem navbar-item"
+              href="javascript:window.print()"
+              title="Print this page"
+            >
+              <b-icon class="Nav-printerIcon" icon="printer" />
+            </a>
+            <g-link class="Nav-homeItem navbar-item" to="/" title="Home" exact>
+              <b-icon class="Nav-homeIcon" icon="cards" />
+            </g-link>
+            <g-link class="navbar-item" to="/faq/" title="FAQ">
+              <b-icon class="Nav-faqIcon" icon="frequently-asked-questions" />
+            </g-link>
+            <a
+              class="navbar-item"
+              href="https://github.com/jaguilar87/netea-cards"
+              target="_blank"
+            >
+              <b-icon class="Nav-githubIcon" icon="github" title="See repo" />
+            </a>
           </div>
         </div>
       </div>
@@ -48,20 +49,39 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@media print {
-  .Nav {
+.Nav {
+  @media print {
     display: none !important;
   }
-}
 
-.Nav {
+  &-brand {
+    @media only screen and (max-device-width: 640px) {
+      display: none;
+    }
+  }
+
+  &-printItem {
+    @media only screen and (max-device-width: 640px) {
+      display: none;
+    }
+  }
+
+  &-homeItem {
+    display: none;
+
+    @media only screen and (max-device-width: 640px) {
+      display: block;
+    }
+  }
+
   &-icon {
     margin-right: 5px;
   }
 
   &-githubIcon,
   &-printerIcon,
-  &-faqIcon {
+  &-faqIcon,
+  &-homeIcon {
     color: black;
   }
 }

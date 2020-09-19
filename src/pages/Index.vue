@@ -53,6 +53,10 @@ export default {
     margin: 5px;
     display: flex;
     flex-direction: column;
+
+    @media only screen and (max-device-width: 640px) {
+      width: 100%;
+    }
   }
 
   &-iconContainer {
