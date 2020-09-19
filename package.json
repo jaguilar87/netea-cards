@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "scripts": {
-    "build": "npx gridsome build",
+    "build": "npm run fetch && gridsome build",
     "develop": "gridsome develop",
     "explore": "gridsome explore",
     "start": "npm run develop",

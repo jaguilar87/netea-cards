@@ -1,8 +1,8 @@
 <template>
-  <nav class="Nav navbar" role="navigation" aria-label="main navigation">
+  <nav class="Nav navbar">
     <div class="container">
       <div class="navbar-brand">
-        <g-link class="navbar-item" to="/">
+        <g-link class="navbar-item" to="/" exact>
           <b-icon class="Nav-icon" icon="cards-outline" />
           <h1>
             NetEA Unit Cards <span v-if="section"> - {{ section }}</span>
@@ -15,12 +15,12 @@
           <div class="navbar-item">
             <div class="buttons">
               <b-navbar-item>
-                <a href="/faq" title="FAQ">
+                <g-link to="/faq/" title="FAQ">
                   <b-icon
                     class="Nav-faqIcon"
                     icon="frequently-asked-questions"
                   />
-                </a>
+                </g-link>
               </b-navbar-item>
               <b-navbar-item>
                 <a href="javascript:window.print()" title="Print this page">
@@ -29,7 +29,7 @@
               </b-navbar-item>
               <b-navbar-item>
                 <a
-                  href="https://github.com/jaguilar87/card-generator"
+                  href="https://github.com/jaguilar87/netea-cards"
                   target="_blank"
                 >
                   <b-icon
