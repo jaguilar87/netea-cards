@@ -31,7 +31,4 @@ do
   done
 done
 
-# hotfixes
-sed  -e 's/speed: 35/speed: 35cm/g' data/units/salamander-attack-bike.md
-
 echo "Done!"

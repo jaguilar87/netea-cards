@@ -60,6 +60,12 @@ module.exports = function (api) {
             );
           },
         },
+        speed: {
+          type: 'String',
+          resolve(obj) {
+            return obj.speed;
+          },
+        },
       },
     },
   });
