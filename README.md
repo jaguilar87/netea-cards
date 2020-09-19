@@ -1,9 +1,13 @@
-## Gridsome Buefy Starter
+# NetEA Cards
 
-When I was trying to transition my personal website from hugo to gridsome, I noticed a lack of starter templates that use `buefy`, an amazing open source UI framework.
+[![Netlify Status](https://api.netlify.com/api/v1/badges/0c5681f4-9b38-42fb-8289-5233ad3f5141/deploy-status)](https://app.netlify.com/sites/netea-cards/deploys)
 
-I have created a fairly basic repo to get started with buefy.
+> Generates Net Epic Armageddon unit cards using [Gridsome](https://gridsome.org/).
 
-### Contact Me
+## Pull data
 
-Please feel free to make any issues or pull requests if any issues arise.
+Run `npm run fetch` to fetch data from [the torunament pack repo](https://github.com/dsusco/tp.net-armageddon.org).
+
+## Start development
+
+Run `npm start` to start a development server.
