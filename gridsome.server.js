@@ -1,33 +1,100 @@
-// Server API makes it possible to hook into various parts of Gridsome
-// on server-side and add custom data to the GraphQL data layer.
-// Learn more: https://gridsome.org/docs/server-api
+const CustomMdSource = require('./plugins/CustomMdSource');
 
-// Changes here require a server restart.
-// To restart press CTRL + C in terminal and run `gridsome develop`
 module.exports = function (api) {
-  api.chainWebpack((config, { isServer }) => {});
-
-  api.loadSource(({ addSchemaTypes }) => {
-    addSchemaTypes(`
-      type SpecialRule implements Node @infer {
-        fileName: String @proxy(from: "fileInfo.name")
-      }
-
-      type Weapon implements Node @infer {
-        fileName: String @proxy(from: "fileInfo.name")
-      }
-
-      type Unit implements Node @infer {
-        fileName: String @proxy(from: "fileInfo.name")
-      }
-
-      type Force implements Node @infer {
-        fileName: String @proxy(from: "fileInfo.name")
-      }
-    `);
+  new CustomMdSource(api, {
+    baseDir: 'data',
+    path: 'army_lists/*.md',
+    typeName: 'Army',
+    index: [],
+    refs: {
+      forces: 'Force',
+    },
   });
-
-  api.createPages(({ createPage }) => {
-    // Use the Pages API here: https://gridsome.org/docs/pages-api
+  new CustomMdSource(api, {
+    baseDir: 'data',
+    path: 'forces/*.md',
+    typeName: 'Force',
+    index: [],
+    refs: {
+      units: 'Unit',
+      special_rules: 'SpecialRule',
+    },
+  });
+  new CustomMdSource(api, {
+    baseDir: 'data',
+    path: 'special_rules/*.md',
+    typeName: 'SpecialRule',
+    index: [],
+  });
+  new CustomMdSource(api, {
+    baseDir: 'data',
+    path: 'units/*.md',
+    typeName: 'Unit',
+    index: [],
+    refs: {
+      special_rules: 'SpecialRule',
+    },
+    schemaTypes: [
+      {
+        name: 'UnitWeapons',
+        fields: {
+          id: 'String',
+          multiplier: 'String',
+          arc: 'String',
+          data: 'Weapon',
+        },
+      },
+    ],
+    resolvers: {
+      Unit: {
+        weapons: {
+          type: '[UnitWeapons]',
+          resolve(obj) {
+            return (
+              obj &&
+              obj.weapons &&
+              obj.weapons.map((weapon) => ({
+                ...weapon,
+                data: weapon.id,
+              }))
+            );
+          },
+        },
+      },
+    },
+  });
+  new CustomMdSource(api, {
+    baseDir: 'data',
+    path: 'weapons/*.md',
+    typeName: 'Weapon',
+    index: [],
+    schemaTypes: [
+      {
+        name: 'WeaponModes',
+        fields: {
+          range: 'String',
+          firepower: 'String',
+          specialRules: '[SpecialRule]',
+          boolean: 'String',
+        },
+      },
+    ],
+    resolvers: {
+      Weapon: {
+        modes: {
+          type: '[WeaponModes]',
+          resolve(obj) {
+            return (
+              obj &&
+              obj.modes &&
+              obj.modes.map((mode) => ({
+                ...mode,
+                specialRules: mode.special_rules,
+              }))
+            );
+          },
+        },
+      },
+    },
   });
 };

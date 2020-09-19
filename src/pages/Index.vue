@@ -1,39 +1,66 @@
 <template>
-  <Layout title="Forces">
-    <div class="container"></div>
-
-    <footer class="footer">
-      <div class="content has-text-centered">
-        <p>
-          <strong>NetEA Unit Cards</strong> by
-          <a href="https://github.com/jaguilar87">jaguilar87</a>.
-        </p>
-        <p>
-          Last build on <strong>{{ date }}</strong
-          >.
-        </p>
-      </div>
-    </footer>
+  <Layout>
+    <div class="Index-forcesList container">
+      <g-link
+        class="Index-force button"
+        v-for="edge in $page.armies.edges"
+        :key="edge.node.id"
+        :to="edge.node.path"
+      >
+        <div class="Index-iconContainer">
+          <FactionIcon class="Index-forceIcon" :faction="edge.node.id" />
+        </div>
+        <div>{{ edge.node.title }}</div>
+      </g-link>
+    </div>
   </Layout>
 </template>
 
+<page-query>
+query {
+  armies: allArmy (sortBy: "title", order: ASC) {
+    edges {
+      node {
+        id
+        title
+        path
+      }
+    }
+  }
+}
+</page-query>
+
 <script>
-import now from '~/.temp/now';
+import FactionIcon from '~/components/icons/FactionIcon.vue';
 
 export default {
-  data() {
-    return {
-      date: new Date(now).toDateString(),
-    };
+  components: {
+    FactionIcon,
   },
-  components: {},
 };
 </script>
 
 <style lang="scss" scoped>
-@media print {
-  .footer {
-    display: none;
+.Index {
+  &-forcesList {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &-force {
+    width: calc(25% - 10px);
+    height: 100%;
+    margin: 5px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &-iconContainer {
+    width: 100%;
+  }
+
+  &-forceIcon {
+    margin: auto;
   }
 }
 </style>

@@ -1,7 +1,6 @@
 #!/bin/sh
 
-pwd
-
+# fetch
 if [ -d "tp" ]; then
   echo "Pulling data..."
   cd tp
@@ -12,14 +11,27 @@ else
   git clone https://github.com/dsusco/tp.net-armageddon.org.git tp
 fi
 
+# clean old files
 rm -rf data
 
-for folder in forces units weapons special_rules
+# copy data
+for folder in army_lists forces units weapons special_rules
 do
   echo "Copying $folder..."
   
   mkdir -p data/$folder
   cp tp/_site/_$folder/* data/$folder
 done
+
+# rename html to md
+for folder in army_lists
+do
+  for file in data/$folder/*.html; do
+    mv -- "$file" "${file%.html}.md"
+  done
+done
+
+# hotfixes
+sed  -e 's/speed: 35/speed: 35cm/g' data/units/salamander-attack-bike.md
 
 echo "Done!"

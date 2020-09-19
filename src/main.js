@@ -3,17 +3,18 @@
 import DefaultLayout from '~/layouts/Default.vue';
 import Buefy from 'buefy';
 import 'buefy/dist/buefy.css';
+import Fragment from 'vue-fragment';
 
-export default function (Vue, { router, head, isClient }) {
+export default function (Vue, { head }) {
   // adding material design icons
   head.link.push({
     rel: 'stylesheet',
     href:
-      'https://cdn.materialdesignicons.com/2.5.94/css/materialdesignicons.min.css',
+      'https://cdn.materialdesignicons.com/5.1.45/css/materialdesignicons.min.css',
   });
 
+  Vue.use(Fragment.Plugin);
   Vue.use(Buefy);
 
-  // Set default layout as a global component
   Vue.component('Layout', DefaultLayout);
 }
