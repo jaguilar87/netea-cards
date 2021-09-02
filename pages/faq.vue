@@ -61,14 +61,14 @@
             >NetEA Tournament Pack repo</a
           >, and so, only cards present there can be added. If you have a
           different source of data I could use, please
-          <a href="https://github.com/jaguilar87/card-generator/issues/new"
+          <a href="https://github.com/jaguilar87/netea-cards/issues/new"
             >open an issue</a
           >, and let's discuss it.
         </p>
         <header class="title is-5">I have a suggestion / found a bug</header>
         <p>
           Great! Please
-          <a href="https://github.com/jaguilar87/card-generator/issues/new"
+          <a href="https://github.com/jaguilar87/netea-cards/issues/new"
             >open an issue</a
           >, and let's discuss it.
         </p>
