@@ -20,6 +20,10 @@ export default {
       date: new Date(now).toDateString(),
     }
   },
+  async fetch() {
+    const now = await this.$content('now').fetch()
+    this.date = new Date(now.now).toDateString()
+  },
 }
 </script>
 
