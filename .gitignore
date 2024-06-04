@@ -92,3 +92,5 @@ sw.*
 # Domain
 data
 content
+.temp
+tp

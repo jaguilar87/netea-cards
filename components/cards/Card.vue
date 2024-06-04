@@ -18,6 +18,7 @@
 
   @media print {
     margin: 1px;
+    page-break-inside: avoid;
   }
 }
 </style>
