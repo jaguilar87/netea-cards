@@ -3,8 +3,8 @@
     <AppHeader />
     <UMain class="p-2">
       <slot />
+      <AppFooter />
     </UMain>
-    <AppFooter />
   </UApp>
 </template>
 
