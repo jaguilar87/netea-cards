@@ -9,9 +9,6 @@ const props = defineProps({
   },
 });
 const htmlNotes = md.render(props.card.notes || '');
-if (props.card.notes) {
-  console.log(props.card.notes, htmlNotes);
-}
 </script>
 
 <template>

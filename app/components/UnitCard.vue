@@ -16,7 +16,7 @@ const { data: weapons } = await useAsyncData(
         'in',
         unit?.value?.meta?.weapons?.map(
           (weapon) => `netea40k/weapons/${weapon.id}`,
-        ),
+        ) || [],
       )
       .all(),
 );
